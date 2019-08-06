@@ -1,26 +1,37 @@
-<div>
+<div class="container">
     <div id="accordion" *ngFor="let title of menuOptions">
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                        aria-controls="collapseOne">
+                    <button #el class="btn btn-link" data-toggle="collapse" aria-expanded="true"
+                        aria-controls="collapseOne" (click)="toggleMenu(el)">
                         {{ title.name }}
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id={{title.name}} class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                     <!-- Default unchecked -->
                     <div class="custom-control custom-checkbox" *ngFor="let choice of title.choices">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                        <label class="custom-control-label" for="defaultUnchecked">{{ choice.name }}</label>
+                        <div class="checkbox" id={{choice.name}}>
+                            <input type="checkbox" class="custom-control-input" id={{choice.name}}>
+                            <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
+                        </div>
                     </div>
-                    <p *ngIf="title.related.length">You may also want:</p>
-                    <div class="custom-control custom-checkbox" *ngFor="let related of title.related"> <!-- -->
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                        <label class="custom-control-label" for="defaultUnchecked">{{ related.name }}</label>
+                    <p *ngIf="title.related.length" class="optional">You may also want:</p>
+                    <div class="custom-control custom-checkbox" *ngFor="let related of title.related">
+                        <!-- -->
+                        <div class="checkbox">
+                            <input type="checkbox" class="custom-control-input" id={{related.name}}>
+                            <label class="custom-control-label" for={{related.name}}>{{ related.name }}</label>
+                        </div>
+                        <div class="custom-control custom-checkbox wrapped" *ngFor="let choice of related.choices">
+                            <div class="wrapped-checkbox">
+                                <input type="checkbox" class="custom-control-input" id={{choice.name}}>
+                                <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

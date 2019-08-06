@@ -1,20 +1,23 @@
 export const menuOptions: any[] = [
     {
-        name: 'Salad', choices: [
+        name: 'Salad',
+        choices: [
             { name: 'Santa Fe' },
             { name: 'Greek' },
             { name: 'Asian' },
         ],
         related: [
             {
-                name: 'Dressing', choices: [
+                name: 'Dressing',
+                choices: [
                     { name: 'Italian' },
                     { name: 'Blue Cheese' },
                     { name: 'Ranch' },
                 ]
             },
             {
-                name: 'Bread', choices: [
+                name: 'Bread',
+                choices: [
                     { name: 'Italian' },
                     { name: 'Flat' },
                     { name: 'Sourdough' },
@@ -23,7 +26,8 @@ export const menuOptions: any[] = [
         ]
     },
     {
-        name: 'Entree', choices: [
+        name: 'Entree',
+        choices: [
             { name: 'Steak' },
             { name: 'Salmon' },
             { name: 'Rice' },
@@ -32,14 +36,16 @@ export const menuOptions: any[] = [
         ]
     },
     {
-        name: 'Soup', choices: [
+        name: 'Soup',
+        choices: [
             { name: 'Minestrone' },
             { name: 'Hot and sour' },
             { name: 'Miso' },
         ],
         related: [
             {
-                name: 'Bread', choices: [
+                name: 'Bread',
+                choices: [
                     { name: 'Breadsticks' }
                 ]
             }

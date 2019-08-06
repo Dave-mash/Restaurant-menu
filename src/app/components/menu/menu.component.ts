@@ -12,6 +12,12 @@ export class MenuComponent implements OnInit {
 
   constructor() { }
 
+  toggleMenu (el) {
+    const element = el.textContent.trim();
+    el.setAttribute('data-target', `#${element}`)
+    console.log(el.getAttribute('data-target'))
+  }
+
   ngOnInit() {
     this.menuOptions.forEach(option => console.log(option['name']));
     const dataProperties = {

@@ -1,0 +1,27 @@
+.container {
+    width: 50%;
+}
+
+.optional {
+    /* background: red; */
+    text-align: left;
+    padding: 10px;
+}
+
+.wrapped input, .wrapped label {
+    /* background: blue; */
+    display: flex;
+    /* width: 50%; */
+    justify-content: center;
+    align-items: right;
+}
+
+.checkbox {
+    /* background: orange; */
+    /* width: 50%; */
+    display: flex;
+}
+
+.wrapped-checkbox {
+    width: 20%;
+}
