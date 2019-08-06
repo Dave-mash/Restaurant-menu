@@ -2,9 +2,10 @@
     <div id="accordion" *ngFor="let title of menuOptions">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">
-                    <button #el class="btn btn-link" data-toggle="collapse" aria-expanded="true"
+                <h5 class="mb-0 header-h5">
+                    <button #el class="btn btn-link" data-toggle="collapse" aria-expanded="false"
                         aria-controls="collapseOne" (click)="toggleMenu(el)">
+                        <input type="checkbox" />
                         {{ title.name }}
                     </button>
                 </h5>
@@ -20,14 +21,15 @@
                         </div>
                     </div>
                     <p *ngIf="title.related.length" class="optional">You may also want:</p>
-                    <div class="custom-control custom-checkbox" *ngFor="let related of title.related">
-                        <!-- -->
-                        <div class="checkbox">
-                            <input type="checkbox" class="custom-control-input" id={{related.name}}>
+                    <div class="custom-control custom-checkbox custom-choices" *ngFor="let related of title.related">
+                        <!--  (click)="toggleMenu(el)"-->
+                        <div class="checkbox" #el data-toggle="collapse" aria-expanded="false"
+                         href="#related-category" aria-controls="related-category">
+                            <input #el type="checkbox" class="custom-control-input" id={{related.name}} (click)="checkboxToggle(el)">
                             <label class="custom-control-label" for={{related.name}}>{{ related.name }}</label>
                         </div>
-                        <div class="custom-control custom-checkbox wrapped" *ngFor="let choice of related.choices">
-                            <div class="wrapped-checkbox">
+                        <div id="related-category" class="custom-control custom-checkbox wrapped" *ngFor="let choice of related.choices">
+                            <div class="wrapped-checkbox collapse" aria-labelledby="headingOne" data-parent="#custom-choices">
                                 <input type="checkbox" class="custom-control-input" id={{choice.name}}>
                                 <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
                             </div>

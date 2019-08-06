@@ -23,5 +23,14 @@
 }
 
 .wrapped-checkbox {
-    width: 20%;
+    width: 30%;
+    display: flex;
+}
+
+.wrapped {
+    /* display: none; */
+}
+
+.header-h5 {
+    text-align: left;
 }
