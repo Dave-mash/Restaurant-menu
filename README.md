@@ -12,6 +12,3 @@ Simple Restaurant Menu Site.
 * Run server:
 `ng serve`
 
-## Live URL
-
-`https://`

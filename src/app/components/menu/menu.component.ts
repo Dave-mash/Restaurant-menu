@@ -16,15 +16,6 @@ export class MenuComponent implements OnInit {
 
   toggleRelated (el) {
     let options = el.parentElement.parentElement.parentElement.lastElementChild.lastElementChild;
-    console.log(options)
-    console.log(el.id)
-
-    // if (el.id === 'Greek' && el.checked) {
-    //   options.style.display = 'block';
-    // } else {
-    //   options.style.display = 'none';
-    // }
-
     let idMatch = el.id === 'Greek' || el.id === 'Minestrone';
 
     if (el.checked) {
@@ -36,12 +27,6 @@ export class MenuComponent implements OnInit {
         options.style.display = 'none';
       }
     }
-
-    // if (el.id === 'Minestrone' && el.checked) {
-    //   options.style.display = 'block';
-    // } else {
-    //   options.style.display = 'none';
-    // }
   }
 
   toggleMenu (el) {
