@@ -39,3 +39,11 @@
 .header-h5 {
     text-align: left;
 }
+
+.main-body {
+    display: none;
+}
+
+.optional-menu-section {
+    display: none;
+}

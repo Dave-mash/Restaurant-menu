@@ -9,30 +9,55 @@ import { menuOptions } from 'src/app/menuJson';
 export class MenuComponent implements OnInit {
 
   menuOptions = menuOptions;
-  match = false;
-  relatedOptions = [];
-  textContent;
+  greek = document.querySelector('#Greek');
+  greekIsChecked = this.greek && this.greek.checked;
 
   constructor() { }
 
-  toggleMenu (el) {
-    const element = el.textContent.trim();
-    el.setAttribute('data-target', `#${element}`)
-    console.log(el.getAttribute('data-target'))
+  toggleRelated (el) {
+    let options = el.parentElement.parentElement.parentElement.lastElementChild.lastElementChild;
+    console.log(options)
+    console.log(el.id)
+
+    // if (el.id === 'Greek' && el.checked) {
+    //   options.style.display = 'block';
+    // } else {
+    //   options.style.display = 'none';
+    // }
+
+    let idMatch = el.id === 'Greek' || el.id === 'Minestrone';
+
+    if (el.checked) {
+      if (idMatch) {
+        options.style.display = 'block';
+      }
+    } else {
+      if (idMatch) {
+        options.style.display = 'none';
+      }
+    }
+
+    // if (el.id === 'Minestrone' && el.checked) {
+    //   options.style.display = 'block';
+    // } else {
+    //   options.style.display = 'none';
+    // }
   }
 
-  toggleOption (el, related) {    
+  toggleMenu (el) {
+    let options = el.parentElement.parentElement.nextElementSibling;
+    let isChecked = el.firstElementChild.firstElementChild.checked;
+    
+    isChecked ? options.style.display = 'block' : options.style.display = 'none';
+    console.log(document.querySelector('#Greek').checked)
+  }
+
+  toggleOption (el) {    
     let options = el.parentElement.nextElementSibling;
     
     el.checked ? options.style.display = 'block' : options.style.display = 'none';
   }
 
-  ngOnInit() {
-    this.menuOptions.forEach(option => console.log(option['name']));
-    const dataProperties = {
-      
-    }
-    this.menuOptions[0]['properties'] = dataProperties;
-  }
+  ngOnInit() {}
 
 }

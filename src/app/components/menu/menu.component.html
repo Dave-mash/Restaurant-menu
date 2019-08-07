@@ -13,28 +13,32 @@
                 </h5>
             </div>
 
-            <div id={{title.name}} class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id={{title.name}} class="main-body" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                     <!-- Default unchecked -->
                     <div class="custom-control custom-checkbox" *ngFor="let choice of title.choices">
                         <div class="checkbox">
-                            <input type="checkbox" class="custom-control-input" id={{choice.name}}>
+                            <input #el type="checkbox" class="custom-control-input" id={{choice.name}} (click)="toggleRelated(el)">
                             <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
                         </div>
                     </div>
-                    <p *ngIf="title.related.length" class="optional">You may also want:</p>
-                    <div class="custom-choices" *ngFor="let related of title.related">
-                        <div class="custom-control custom-checkbox checkbox related-options">
-                            <input #el type="checkbox" class="custom-control-input related-inputs" id={{title.name}}-{{related.name}} (click)="toggleOption(el,related)">
-                            <label class="custom-control-label" for={{title.name}}-{{related.name}}>{{ related.name }}</label>
-                        </div>
-                        <div id="related-category" class="custom-control custom-checkbox wrapped">
-                            <div *ngFor="let choice of related.choices">
-                                <div class="wrapped-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id={{choice.name}}>
-                                    <label class="custom-control-label" for={{choice.name}}>
-                                        {{ choice.name }}
-                                    </label>
+                    <div class="optional-menu">
+                        <div class="optional-menu-section">
+                            <p class="optional">You may also want:</p>
+                            <div class="custom-choices" *ngFor="let related of title.related">
+                                <div class="custom-control custom-checkbox checkbox related-options">
+                                    <input #el type="checkbox" class="custom-control-input related-inputs" id={{title.name}}-{{related.name}} (click)="toggleOption(el)">
+                                    <label class="custom-control-label" for={{title.name}}-{{related.name}}>{{ related.name }}</label>
+                                </div>
+                                <div id="related-category" class="custom-control custom-checkbox wrapped">
+                                    <div *ngFor="let choice of related.choices">
+                                        <div class="wrapped-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id={{choice.name}}>
+                                            <label class="custom-control-label" for={{choice.name}}>
+                                                {{ choice.name }}
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
