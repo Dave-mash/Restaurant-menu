@@ -21,67 +21,10 @@ export class MenuComponent implements OnInit {
     console.log(el.getAttribute('data-target'))
   }
 
-  toggleOption (el, related) {
-    const element = el.nextElementSibling.textContent.trim();
-    // el.setAttribute('data-target', `#${element}`);
-    let children = document.querySelector('.custom-choices');
-    // console.log(el.getAttribute('data-target'));
-    // console.log(children.lastElementChild)
-    this.textContent = el.nextElementSibling.textContent;
-    
-    // let inputs = document.querySelectorAll('.related-inputs');
-    // console.log(inputs)
-    // inputs.forEach(input => {
-    //   console.log(input['checked'])
-    //   if (input['checked'] === false) {
-    //     el.p
-    //   }
-    // })
+  toggleOption (el, related) {    
     let options = el.parentElement.nextElementSibling;
     
-    if (el.checked) { // && this.textContent === related.name
-      // console.log(el);
-      // let text = document.createElement('p');
-      // text.innerHTML = `<p class="some-text">Some text</p>`
-      // children.appendChild(text); 
-      // this.relatedOptions = related.choices;
-      console.log(el.parentElement.nextElementSibling);
-      options.style.display = 'block';
-      // this.match = true;
-      // console.log(document.getElementById('related-category'));
-      // document.getElementById('related-category').textContent = 'here';
-    } else {
-      options.style.display = 'none';
-      // this.relatedOptions = [];
-      // this.match = false;
-      // let children = document.querySelector('#related-category');
-      // console.log(children)
-    }
-    console.log(this.relatedOptions);
-  }
-
-  checkboxToggle(el) {
-    const element = el.parentElement.nextElementSibling;
-
-    if (el.checked) {
-      // this.menuOptions.forEach(option => {
-      //   option.related.forEach(relatedOption => {
-      //     if (el.nextElementSibling.textContent == relatedOption['name']) {
-      //       this.relatedOptions = relatedOption['choices'];
-      //     }
-      //   })
-      // });
-      // console.log(`#${el.nextElementSibling.textContent}`)
-      console.log('checked')
-      console.log(element);
-      element.style.display = 'flex';
-    } else {
-      console.log('unchecked')
-      // this.relatedOptions = [];
-      console.log(element.style.display);
-      // console.log(this.relatedOptions)
-      element.style.display = 'none';
-    }
+    el.checked ? options.style.display = 'block' : options.style.display = 'none';
   }
 
   ngOnInit() {

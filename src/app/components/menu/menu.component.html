@@ -24,7 +24,6 @@
                     </div>
                     <p *ngIf="title.related.length" class="optional">You may also want:</p>
                     <div class="custom-choices" *ngFor="let related of title.related">
-                        <!--  (click)="toggleMenu(el)"-->
                         <div class="custom-control custom-checkbox checkbox related-options">
                             <input #el type="checkbox" class="custom-control-input related-inputs" id={{related.name}} (click)="toggleOption(el,related)">
                             <label class="custom-control-label" for={{related.name}}>{{ related.name }}</label>
