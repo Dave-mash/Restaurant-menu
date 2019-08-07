@@ -26,14 +26,14 @@
                     <div class="custom-choices" *ngFor="let related of title.related">
                         <!--  (click)="toggleMenu(el)"-->
                         <div class="custom-control custom-checkbox checkbox related-options">
-                            <input #el type="checkbox" class="custom-control-input" id={{related.name}} (click)="toggleOption(el,related)">
+                            <input #el type="checkbox" class="custom-control-input related-inputs" id={{related.name}} (click)="toggleOption(el,related)">
                             <label class="custom-control-label" for={{related.name}}>{{ related.name }}</label>
                         </div>
-                        <div id="related-category" class="custom-control custom-checkbox wrapped" *ngIf="match">
+                        <div id="related-category" class="custom-control custom-checkbox wrapped">
                             <div *ngFor="let choice of related.choices">
                                 <div class="wrapped-checkbox">
-                                    <input type="checkbox" class="custom-control-input">
-                                    <label class="custom-control-label">
+                                    <input type="checkbox" class="custom-control-input" id={{choice.name}}>
+                                    <label class="custom-control-label" for={{choice.name}}>
                                         {{ choice.name }}
                                     </label>
                                 </div>

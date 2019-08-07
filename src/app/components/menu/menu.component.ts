@@ -24,26 +24,38 @@ export class MenuComponent implements OnInit {
   toggleOption (el, related) {
     const element = el.nextElementSibling.textContent.trim();
     // el.setAttribute('data-target', `#${element}`);
-    // let children = document.querySelector('.custom-choices');
+    let children = document.querySelector('.custom-choices');
     // console.log(el.getAttribute('data-target'));
-    console.log(element)
+    // console.log(children.lastElementChild)
     this.textContent = el.nextElementSibling.textContent;
-
-    if (el.checked && this.textContent === related.name) {
+    
+    // let inputs = document.querySelectorAll('.related-inputs');
+    // console.log(inputs)
+    // inputs.forEach(input => {
+    //   console.log(input['checked'])
+    //   if (input['checked'] === false) {
+    //     el.p
+    //   }
+    // })
+    let options = el.parentElement.nextElementSibling;
+    
+    if (el.checked) { // && this.textContent === related.name
       // console.log(el);
       // let text = document.createElement('p');
       // text.innerHTML = `<p class="some-text">Some text</p>`
       // children.appendChild(text); 
-      this.relatedOptions = related.choices;
-      console.log('match');
-      this.match = true;
+      // this.relatedOptions = related.choices;
+      console.log(el.parentElement.nextElementSibling);
+      options.style.display = 'block';
+      // this.match = true;
       // console.log(document.getElementById('related-category'));
       // document.getElementById('related-category').textContent = 'here';
     } else {
-      this.relatedOptions = [];
-      this.match = false;
-      let children = document.querySelector('#related-category');
-      console.log(children)
+      options.style.display = 'none';
+      // this.relatedOptions = [];
+      // this.match = false;
+      // let children = document.querySelector('#related-category');
+      // console.log(children)
     }
     console.log(this.relatedOptions);
   }
