@@ -5,8 +5,10 @@
                 <h5 class="mb-0 header-h5">
                     <button #el class="btn btn-link" data-toggle="collapse" aria-expanded="false"
                         aria-controls="collapseOne" (click)="toggleMenu(el)">
-                        <input type="checkbox" />
-                        {{ title.name }}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id={{title.name}}/>
+                            <label class="custom-control-label" for={{title.name}}>{{ title.name }}</label>
+                        </div>
                     </button>
                 </h5>
             </div>
@@ -15,23 +17,26 @@
                 <div class="card-body">
                     <!-- Default unchecked -->
                     <div class="custom-control custom-checkbox" *ngFor="let choice of title.choices">
-                        <div class="checkbox" id={{choice.name}}>
+                        <div class="checkbox">
                             <input type="checkbox" class="custom-control-input" id={{choice.name}}>
                             <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
                         </div>
                     </div>
                     <p *ngIf="title.related.length" class="optional">You may also want:</p>
-                    <div class="custom-control custom-checkbox custom-choices" *ngFor="let related of title.related">
+                    <div class="custom-choices" *ngFor="let related of title.related">
                         <!--  (click)="toggleMenu(el)"-->
-                        <div class="checkbox" #el data-toggle="collapse" aria-expanded="false"
-                         href="#related-category" aria-controls="related-category">
-                            <input #el type="checkbox" class="custom-control-input" id={{related.name}} (click)="checkboxToggle(el)">
+                        <div class="custom-control custom-checkbox checkbox related-options">
+                            <input #el type="checkbox" class="custom-control-input" id={{related.name}} (click)="toggleOption(el,related)">
                             <label class="custom-control-label" for={{related.name}}>{{ related.name }}</label>
                         </div>
-                        <div id="related-category" class="custom-control custom-checkbox wrapped" *ngFor="let choice of related.choices">
-                            <div class="wrapped-checkbox collapse" aria-labelledby="headingOne" data-parent="#custom-choices">
-                                <input type="checkbox" class="custom-control-input" id={{choice.name}}>
-                                <label class="custom-control-label" for={{choice.name}}>{{ choice.name }}</label>
+                        <div id="related-category" class="custom-control custom-checkbox wrapped" *ngIf="match">
+                            <div *ngFor="let choice of related.choices">
+                                <div class="wrapped-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <label class="custom-control-label">
+                                        {{ choice.name }}
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -40,3 +45,8 @@
         </div>
     </div>
 </div>
+
+<!--
+     data-toggle="collapse" aria-expanded="true"
+                        href="#related-category" aria-controls="related-category"
+-->

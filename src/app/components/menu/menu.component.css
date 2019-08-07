@@ -17,13 +17,18 @@
 }
 
 .checkbox {
-    /* background: orange; */
     /* width: 50%; */
     display: flex;
 }
 
+.related-options {
+    padding-left: 40px;
+}
+
 .wrapped-checkbox {
-    width: 30%;
+    /* background: orange; */
+    /* width: 100%; */
+    padding-left: 40px;
     display: flex;
 }
 
