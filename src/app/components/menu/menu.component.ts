@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
 
   menuOptions = menuOptions;
   greek = document.querySelector('#Greek');
-  greekIsChecked = this.greek && this.greek.checked;
+  greekIsChecked = this.greek && this.greek['checked'];
 
   constructor() { }
 
@@ -34,7 +34,7 @@ export class MenuComponent implements OnInit {
     let isChecked = el.firstElementChild.firstElementChild.checked;
     
     isChecked ? options.style.display = 'block' : options.style.display = 'none';
-    console.log(document.querySelector('#Greek').checked)
+    console.log(document.querySelector('#Greek')['checked'])
   }
 
   toggleOption (el) {    
